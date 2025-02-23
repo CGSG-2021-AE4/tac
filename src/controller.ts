@@ -36,6 +36,6 @@ export class Workflow {
     }
 
     await this.coloriser.load(s.img, s.masks);
-
+    console.log(this.coloriser);
   }
 }

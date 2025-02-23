@@ -3,7 +3,7 @@
 export class ColorOption {
   id: number;
   name: string;
-  color: string;
+  color: number;
 }
 
 export class ColorMenuDescriptor {

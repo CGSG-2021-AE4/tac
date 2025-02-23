@@ -107,4 +107,10 @@ export class ImageLoader {
     this.frontImg.src = src;
     return this.defered.promise();
   }
+
+  get(): HTMLImageElement {
+    if (this.isTransition)
+      return this.frontImg;
+    return this.backImg;
+  }
 }
