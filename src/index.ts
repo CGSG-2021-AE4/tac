@@ -1,7 +1,8 @@
 import { Config, Workflow } from "./controller";
 
 const config: Config = {
-  palettePrefix: "resources/palettes/",
+  paletteDir: "resources/palettes/",
+  imageDir: "resources/images/",
   scenes: [
     {
       id: 0,
@@ -23,4 +24,7 @@ const config: Config = {
 };
 
 const wf = new Workflow(config);
+
+
+wf.load(0);
 

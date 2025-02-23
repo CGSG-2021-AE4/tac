@@ -1,0 +1,8 @@
+:root {
+  font-family: 'Roboto', sans-serif;
+
+  --dark: #3c3c3c;
+  --light: #f0f0f0;
+
+  --dropdown-width: 13em;
+}

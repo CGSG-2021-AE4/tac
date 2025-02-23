@@ -1,0 +1,23 @@
+
+#image-container {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+#image-container-parent {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: grid;
+  align-items: center;
+  justify-items: unset;
+
+  @media screen and (max-aspect-ratio: 1) {
+    align-items: unset;
+    justify-items: center ;
+  }
+}
+
+
