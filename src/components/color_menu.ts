@@ -80,12 +80,14 @@ export class ColorMenu {
     this.optionElements = [];
     
     p.colors.map( ( c: Color ) => {
+      const nc = parseInt(c.color.replace(/^#/, ""), 16);
+
       // Calculating contrastColor
       c.contrastColor = "var(--light)";
       // Getting brightness
-      const r = (c.color >> 16) & 0xFF;
-      const g = (c.color >> 8) & 0xFF;
-      const b = (c.color >> 0) & 0xFF;
+      const r = (nc >> 16) & 0xFF;
+      const g = (nc >> 8) & 0xFF;
+      const b = (nc >> 0) & 0xFF;
       const max = Math.max(r, g, b);
       const min = Math.min(r, g, b);
       const br = (max + min) / 2;
