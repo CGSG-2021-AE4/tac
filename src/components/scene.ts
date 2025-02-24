@@ -1,6 +1,6 @@
 // Main data structures
 
-import { ColorMenuDescriptor } from "./color";
+import { ColorMenuDescriptor } from "./color_menu";
 
 export class SceneDescriptor {
   id: number;

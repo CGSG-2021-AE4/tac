@@ -1,5 +1,6 @@
 // Global data structures
 
+import { ColorControls } from "./components/color_controls";
 import { ImageColoriser } from "./components/image";
 import { SceneDescriptor } from "./components/scene";
 
@@ -16,6 +17,7 @@ export class Workflow {
   curScene: SceneDescriptor | null;
 
   coloriser: ImageColoriser;
+  colorControls: ColorControls;
   
   constructor( config: Config ) {
     // Loading config
@@ -26,6 +28,7 @@ export class Workflow {
 
     // Setup components
     this.coloriser = new ImageColoriser($("#image-container"), this.config.imageDir);
+    this.colorControls = new ColorControls($("#color-controls-container"), this.coloriser, this.config.paletteDir);
   }
 
   async load( id: number ) { // Load scene by ID
@@ -37,6 +40,8 @@ export class Workflow {
 
     await this.coloriser.load(s.img, s.masks);
     console.log(this.coloriser);
+
+    this.colorControls.load(s.colors);
 
     this.coloriser.setColors([0xFF0000, 0x00FF00]);
   }

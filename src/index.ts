@@ -12,10 +12,12 @@ const config: Config = {
       colors: [
         {
           label: "Skin color",
+          baseColor: 0xFFFFFF,
           palette: "sheep_skin",
         },
         {
           label: "Wool color",
+          baseColor: 0xFFFFFF,
           palette: "sheep_wool",
         }
       ]

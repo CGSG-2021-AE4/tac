@@ -1,0 +1,22 @@
+@import url("color_menu.css");
+
+#color-controls-container {
+  position: absolute;
+  right: 4%;
+  bottom: 4%;
+}
+
+.color-menu-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block: 32px;
+}
+
+.color-menu-label {
+  color: var(--light);
+  margin-inline: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
