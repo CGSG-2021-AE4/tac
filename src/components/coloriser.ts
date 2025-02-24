@@ -45,7 +45,7 @@ export class ImageColoriser {
       this.currentImg = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
       this.originalImg = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
 
-      console.log(`loaded '${mainImg}' pixels`)
+      console.log(`loaded '${mainImg}' pixels`);
       resolve();
     }));
     
@@ -85,8 +85,6 @@ export class ImageColoriser {
       return;
     }
 
-    console.log("--- update image ---");
-  
     for(var i = 0; i < this.currentImg.data.length; i++) {
       this.currentImg.data[i] = 255;
     }
@@ -103,11 +101,7 @@ export class ImageColoriser {
       this.currentImg.data[i] = this.originalImg.data[i] * this.currentImg.data[i] / 255.0;
     }
 
-  
-    console.log("1");
     this.ctx.putImageData(this.currentImg, 0, 0);
-    console.log("2");
     this.imageLoader.load(this.canvas.toDataURL("image/png"));
-    console.log("3");
   }
 }

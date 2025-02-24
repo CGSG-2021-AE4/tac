@@ -1,7 +1,8 @@
 // Global data structures
 
 import { ColorControls } from "./components/color_controls";
-import { ImageColoriser } from "./components/image";
+import { Color } from "./components/color_menu";
+import { ImageColoriser } from "./components/coloriser";
 import { SceneDescriptor } from "./components/scene";
 
 export class Config {        // Config contains different global data
@@ -18,6 +19,20 @@ export class Workflow {
 
   coloriser: ImageColoriser;
   colorControls: ColorControls;
+
+  // Callbacks
+  onColorChange = ( newColors: Color[] ) => {
+    console.log(newColors);
+
+    // Extract colors
+    const colorSet: number[] = [];
+    newColors.map(c => {
+      colorSet.push(parseInt(c.color.replace(/^#/, ""), 16))
+    });
+
+    // Update image
+    this.coloriser.setColors(colorSet);
+  }
   
   constructor( config: Config ) {
     // Loading config
@@ -28,7 +43,8 @@ export class Workflow {
 
     // Setup components
     this.coloriser = new ImageColoriser($("#image-container"), this.config.imageDir);
-    this.colorControls = new ColorControls($("#color-controls-container"), this.coloriser, this.config.paletteDir);
+    this.colorControls = new ColorControls($("#color-controls-container"), this.config.paletteDir);
+    this.colorControls.onchange = this.onColorChange;
   }
 
   async load( id: number ) { // Load scene by ID

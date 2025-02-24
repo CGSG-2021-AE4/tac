@@ -3,7 +3,7 @@
 export class Color {
   id: number;
   name: string;
-  color: number;
+  color: string;
   contrastColor?: string; // Contrast color that is used for text 
 }
 
@@ -14,10 +14,9 @@ export class Palette {
 
 export class ColorMenuDescriptor {
   label: string;     // Label for drop down menu
-  baseColor: number; // Color of material on main image
+  baseColor: string; // Color of material on main image
   palette: string;   // Name of JSON file in palettes dir with array of ColorOption type
 }
-
 
 export class ColorMenu {
   // Local data
