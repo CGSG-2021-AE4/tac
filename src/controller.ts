@@ -37,5 +37,7 @@ export class Workflow {
 
     await this.coloriser.load(s.img, s.masks);
     console.log(this.coloriser);
+
+    this.coloriser.setColors([0xFF0000, 0x00FF00]);
   }
 }

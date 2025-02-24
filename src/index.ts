@@ -8,15 +8,15 @@ const config: Config = {
       id: 0,
       name: "Sheep",
       img: "sheep/main.jpg",
-      masks: ["sheep/wool_mask.jpg", "sheep/skin_mask.jpg"],
+      masks: ["sheep/skin_mask.jpg", "sheep/wool_mask.jpg"],
       colors: [
-        {
-          label: "Wool color",
-          palette: "sheep_wool",
-        },
         {
           label: "Skin color",
           palette: "sheep_skin",
+        },
+        {
+          label: "Wool color",
+          palette: "sheep_wool",
         }
       ]
     }

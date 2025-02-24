@@ -11,7 +11,7 @@ export class ImageColoriser {
 
   originalImg: ImageData | null = null;
   currentImg: ImageData | null = null;
-  masks: (ImageData | null)[];
+  masks: (ImageData)[];
 
   constructor( c: JQuery<HTMLDivElement>, imageDir: string ) {
     this.imageDir = imageDir;
@@ -55,7 +55,6 @@ export class ImageColoriser {
     this.masks = [];
     for (var counter = 0; counter < masks.length; counter++) {
       const i = counter;
-      this.masks.push(null);
       promises.push(new Promise(( resolve, reject ) => {
         console.log(`start '${masks[i]}'`)
         const img = new Image();
@@ -73,14 +72,42 @@ export class ImageColoriser {
       }));
     }
 
-    // Extra check
-    // setTimeout(() => {
-    //   if(!this.originalPixels || !this.currentPixels || !this.woolMask || !this.skinMask) {
-    //     console.log("!!!something did not loaded");
-    //     console.log("EXTRA");
-    //     this.loadImgs();         
-    //   }
-    // }, 1000);
-    return Promise.all(promises);
+   return Promise.all(promises);
+  }
+
+  setColors( colors: number[] ) {
+    if (colors.length != this.masks.length) {
+      console.log("ERROR: number of masks and colors do not match");
+      return;
+    }
+    if (!this.originalImg || !this.currentImg) {
+      console.log("ERROR: original or current image is null");
+      return;
+    }
+
+    console.log("--- update image ---");
+  
+    for(var i = 0; i < this.currentImg.data.length; i++) {
+      this.currentImg.data[i] = 255;
+    }
+
+    console.log(colors)
+    for (var mi = 0; mi < this.masks.length; mi++)
+      for (var i = 0; i < this.currentImg.data.length; i += 4) {
+        this.currentImg.data[i + 0] = (((colors[mi] >> 16) & 0xFF) * this.masks[mi].data[i] / 255.0 + this.currentImg.data[i + 0] * (255 - this.masks[mi].data[i]) / 255.0);
+        this.currentImg.data[i + 1] = (((colors[mi] >>  8) & 0xFF) * this.masks[mi].data[i] / 255.0 + this.currentImg.data[i + 1] * (255 - this.masks[mi].data[i]) / 255.0);
+        this.currentImg.data[i + 2] = (((colors[mi] >>  0) & 0xFF) * this.masks[mi].data[i] / 255.0 + this.currentImg.data[i + 2] * (255 - this.masks[mi].data[i]) / 255.0);
+      }
+
+    for(var i = 0; i < this.currentImg.data.length; i++) {
+      this.currentImg.data[i] = this.originalImg.data[i] * this.currentImg.data[i] / 255.0;
+    }
+
+  
+    console.log("1");
+    this.ctx.putImageData(this.currentImg, 0, 0);
+    console.log("2");
+    this.imageLoader.load(this.canvas.toDataURL("image/png"));
+    console.log("3");
   }
 }

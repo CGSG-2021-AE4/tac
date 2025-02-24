@@ -37,7 +37,7 @@ export class ImageLoader {
   }
 
   onload = () => {
-    console.log(`loaded '${this.frontImg.src}'`);
+    console.log(`loaded '${this.frontImg.src.substring(0, Math.min(this.frontImg.src.length, 20))}'`);
 
     // this.backImg.classList.add("transparent");
     this.frontImg.ontransitionend = this.ontransitionend; // Setup callback
@@ -86,7 +86,7 @@ export class ImageLoader {
 
   async load( src: string ) {
     if (this.isTransition) {
-      console.log(`Not able to load '${src}' during transition - defer`);
+      console.log(`defer '${src.substring(0, Math.min(src.length, 20))}' during transition`);
       this.nextSrc = src;
       this.nextDefered = $.Deferred();
       return this.nextDefered.promise();
@@ -101,7 +101,7 @@ export class ImageLoader {
     } else
       this.defered = $.Deferred();
 
-    console.log(`loading '${src}'`);
+    console.log(`loading '${src.substring(0, Math.min(src.length, 20))}'`);
 
     this.loadingImg.classList.remove("transparent");
     this.frontImg.src = src;
