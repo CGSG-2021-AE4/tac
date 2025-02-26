@@ -51,7 +51,7 @@ export class ColorMenu {
     // this.options = options;
 
     // Create button
-    this.buttonElement = $(`<button class="color-menu-button"></button>`)
+    this.buttonElement = $(`<button class="color-menu-button"/>`)
     this.buttonElement.on("click", () => {
       this.optionsContainer.toggleClass("hidden");
     });
@@ -73,7 +73,7 @@ export class ColorMenu {
   // Setup functions
 
   loadPalette( p: Palette ) {
-   this.palette = p;
+    this.palette = p;
 
     // Clear previous palette
     this.optionsContainer.html("");
@@ -115,6 +115,5 @@ export class ColorMenu {
     this.buttonElement.text(this.buttonText);
     this.buttonElement.css("background-color", "var(--light)");
     this.buttonElement.css("color", "var(--dark)");
-
   }
 }

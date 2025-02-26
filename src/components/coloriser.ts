@@ -39,8 +39,8 @@ export class ImageColoriser {
 
     // Load main image pixels
     promises.push(new Promise((resolve) => {
-      const img = this.imageLoader.get()
-    
+      const img = this.imageLoader.get();
+      
       this.ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, this.canvas.width, this.canvas.height);
       this.currentImg = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
       this.originalImg = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
@@ -85,19 +85,20 @@ export class ImageColoriser {
       return;
     }
 
-    for(var i = 0; i < this.currentImg.data.length; i++) {
+    for (var i = 0; i < this.currentImg.data.length; i++) {
       this.currentImg.data[i] = 255;
     }
 
     console.log(colors)
-    for (var mi = 0; mi < this.masks.length; mi++)
+    for (var mi = 0; mi < this.masks.length; mi++) {
       for (var i = 0; i < this.currentImg.data.length; i += 4) {
         this.currentImg.data[i + 0] = (((colors[mi] >> 16) & 0xFF) * this.masks[mi].data[i] / 255.0 + this.currentImg.data[i + 0] * (255 - this.masks[mi].data[i]) / 255.0);
         this.currentImg.data[i + 1] = (((colors[mi] >>  8) & 0xFF) * this.masks[mi].data[i] / 255.0 + this.currentImg.data[i + 1] * (255 - this.masks[mi].data[i]) / 255.0);
         this.currentImg.data[i + 2] = (((colors[mi] >>  0) & 0xFF) * this.masks[mi].data[i] / 255.0 + this.currentImg.data[i + 2] * (255 - this.masks[mi].data[i]) / 255.0);
       }
+    }
 
-    for(var i = 0; i < this.currentImg.data.length; i++) {
+    for (var i = 0; i < this.currentImg.data.length; i++) {
       this.currentImg.data[i] = this.originalImg.data[i] * this.currentImg.data[i] / 255.0;
     }
 

@@ -3,7 +3,8 @@
 import { ColorControls } from "./components/color_controls";
 import { Color } from "./components/color_menu";
 import { ImageColoriser } from "./components/coloriser";
-import { SceneDescriptor } from "./components/scene";
+import { SceneDescriptor } from "./components/scene_menu";
+import { SceneMenu, SceneMenuOption } from "./components/scene_menu";
 
 export class Config {        // Config contains different global data
   paletteDir: string;     // URL to directory with palette configs
@@ -19,6 +20,7 @@ export class Workflow {
 
   coloriser: ImageColoriser;
   colorControls: ColorControls;
+  sceneMenu: SceneMenu;
 
   // Callbacks
   onColorChange = ( newColors: Color[] ) => {
@@ -33,6 +35,11 @@ export class Workflow {
     // Update image
     this.coloriser.setColors(colorSet);
   }
+
+  onSceneChange = ( s: SceneMenuOption ) => {
+    console.log("NEW SCENE");
+    console.log(s);
+  }
   
   constructor( config: Config ) {
     // Loading config
@@ -42,12 +49,18 @@ export class Workflow {
     console.log(this.config);
 
     // Setup components
+    // Coloriser
     this.coloriser = new ImageColoriser($("#image-container"), this.config.imageDir);
+    // Color controls
     this.colorControls = new ColorControls($("#color-controls-container"), this.config.paletteDir);
     this.colorControls.onchange = this.onColorChange;
+    // Scene menu
+    this.sceneMenu = new SceneMenu($("#scene-menu-container"));
+    this.sceneMenu.onchange = this.onSceneChange;
+    this.sceneMenu.loadConfig(this.config.scenes.map(function( s ): SceneMenuOption { return  { id: s.id, name: s.name, }; }));
   }
 
-  async load( id: number ) { // Load scene by ID
+  async loadScene( id: number ) { // Load scene by ID
     const s = this.config.scenes.find(s => s.id == id);
     if (!s) {
       console.log(`ERROR: no scene with id ${id} was found`);
@@ -58,7 +71,5 @@ export class Workflow {
     console.log(this.coloriser);
 
     this.colorControls.load(s.colors);
-
-    this.coloriser.setColors([0xFF0000, 0x00FF00]);
   }
 }

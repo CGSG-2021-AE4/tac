@@ -12,15 +12,64 @@ const config: Config = {
       colors: [
         {
           label: "Skin color",
-          baseColor: 0xFFFFFF,
+          baseColor: "0xFFFFFF",
           palette: "sheep_skin",
         },
         {
           label: "Wool color",
-          baseColor: 0xFFFFFF,
+          baseColor: "0xFFFFFF",
           palette: "sheep_wool",
         }
       ]
+    },
+    {
+      id: 1,
+      name: "test 1",
+      img: "sheep/main.jpg",
+      masks: [],
+      colors: [],
+    },
+    {
+      id: 1,
+      name: "test 2",
+      img: "sheep/main.jpg",
+      masks: [],
+      colors: [],
+    },
+    {
+      id: 1,
+      name: "test 3",
+      img: "sheep/main.jpg",
+      masks: [],
+      colors: [],
+    },
+    {
+      id: 1,
+      name: "test 4",
+      img: "sheep/main.jpg",
+      masks: [],
+      colors: [],
+    },
+    {
+      id: 1,
+      name: "test 5",
+      img: "sheep/main.jpg",
+      masks: [],
+      colors: [],
+    },
+    {
+      id: 1,
+      name: "test 6",
+      img: "sheep/main.jpg",
+      masks: [],
+      colors: [],
+    },
+    {
+      id: 1,
+      name: "test 7",
+      img: "sheep/main.jpg",
+      masks: [],
+      colors: [],
     }
   ],
 };
@@ -28,5 +77,5 @@ const config: Config = {
 const wf = new Workflow(config);
 
 
-wf.load(0);
+wf.loadScene(0);
 
