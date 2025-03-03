@@ -37,8 +37,6 @@ export class SceneMenu {
     this.buttonElement.on("click", () => {
       this.optionsContainer.toggleClass("hidden");
     });
-    console.log("AAA")
-    console.log(this.buttonElement)
     
     this.buttonElement.appendTo(this.container);
 
@@ -56,8 +54,6 @@ export class SceneMenu {
   }
 
   loadConfig( options: SceneMenuOption[] ) {
-    console.log("sceneeeee");
-    console.log(options);
     this.optionsContainer.append(options.map( ( s: SceneMenuOption ) => {
       const e = $(`<div class="scene-menu-option">${s.name}</div>`);
       e.on("click", () => {

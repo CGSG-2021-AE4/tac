@@ -37,8 +37,6 @@ export class Workflow {
   }
 
   onSceneChange = async ( s: SceneMenuOption ) => {
-    console.log("NEW SCENE");
-    console.log(s);
     return this.loadSceneP(s.id);
   }
   
@@ -47,6 +45,7 @@ export class Workflow {
     this.config = config;
     if (!this.config.scenes || this.config.scenes.length == 0)
       throw new Error("now scene available");
+    console.log("CONFIG");
     console.log(this.config);
 
     // Setup components
@@ -69,9 +68,7 @@ export class Workflow {
     }
 
     await this.coloriser.load(s.img, s.masks);
-    console.log("Loaded coloriser");
     this.colorControls.load(s.colors);
-    console.log("Loaded color controls")
   }
 
   // For public use - this way it is bad but safe

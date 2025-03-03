@@ -37,9 +37,6 @@ export class ColorControls {
     // Create or hide needed amount of lines
     if (d.length > this.lines.length) {
       const delta = d.length - this.lines.length;
-      console.log("New color menu:");
-      console.log(d);
-      console.log("Color controls delta = " + delta);
 
       // Create more 
       for (var i = 0; i < delta; i++) {

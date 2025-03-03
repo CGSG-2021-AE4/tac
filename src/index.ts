@@ -39,48 +39,6 @@ const config: Config = {
           palette: "viscose",
         }
       ]
-    },
-    {
-      id: 2,
-      name: "test 2",
-      img: "sheep/main.jpg",
-      masks: [],
-      colors: [],
-    },
-    {
-      id: 3,
-      name: "test 3",
-      img: "sheep/main.jpg",
-      masks: [],
-      colors: [],
-    },
-    {
-      id: 4,
-      name: "test 4",
-      img: "sheep/main.jpg",
-      masks: [],
-      colors: [],
-    },
-    {
-      id: 5,
-      name: "test 5",
-      img: "sheep/main.jpg",
-      masks: [],
-      colors: [],
-    },
-    {
-      id: 6,
-      name: "test 6",
-      img: "sheep/main.jpg",
-      masks: [],
-      colors: [],
-    },
-    {
-      id: 7,
-      name: "test 7",
-      img: "sheep/main.jpg",
-      masks: [],
-      colors: [],
     }
   ],
 };

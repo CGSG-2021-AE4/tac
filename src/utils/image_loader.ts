@@ -19,7 +19,6 @@ export class ImageLoader {
   // Some callbacks
 
   ontransitionend = () => {
-    console.log("transition end")
     this.frontImg.ontransitionend = null;
 
     this.backImg.classList.add("transparent"); // Instantly make it transparent
@@ -37,7 +36,7 @@ export class ImageLoader {
   }
 
   onload = () => {
-    console.log(`loaded '${this.frontImg.src.substring(0, Math.min(this.frontImg.src.length, 20))}'`);
+    console.log(`Image loader: loaded '${this.frontImg.src.substring(0, Math.min(this.frontImg.src.length, 40))}'`);
 
     // this.backImg.classList.add("transparent");
     this.frontImg.ontransitionend = this.ontransitionend; // Setup callback
@@ -48,7 +47,7 @@ export class ImageLoader {
   };
 
   onerror = () => {
-    console.log("image loading failed");
+    console.log("Image loader: image loading failed");
     this.loadingImg.classList.add("transparent");         // Hide loading icon
     this.defered.reject();
     // Sometimes it will shrink if fails
@@ -86,7 +85,7 @@ export class ImageLoader {
 
   async load( src: string ) {
     if (this.isTransition) {
-      console.log(`defer '${src.substring(0, Math.min(src.length, 20))}' during transition`);
+      console.log(`Image loader: defer '${src.substring(0, Math.min(src.length, 40))}' during transition`);
       this.nextSrc = src;
       this.nextDefered = $.Deferred();
       return this.nextDefered.promise();
@@ -101,7 +100,7 @@ export class ImageLoader {
     } else
       this.defered = $.Deferred();
 
-    console.log(`loading '${src.substring(0, Math.min(src.length, 20))}'`);
+    console.log(`Image loader: loading '${src.substring(0, Math.min(src.length, 40))}'`);
 
     this.loadingImg.classList.remove("transparent");
     this.frontImg.src = src;

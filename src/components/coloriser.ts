@@ -45,23 +45,22 @@ export class ImageColoriser {
       this.currentImg = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
       this.originalImg = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
 
-      console.log(`loaded '${mainImg}' pixels`);
       resolve();
     }));
     
     
     // Load masks pixels
-    console.log(masks)
+    //console.log(masks)
     this.masks = [];
     for (var counter = 0; counter < masks.length; counter++) {
       const i = counter;
       promises.push(new Promise(( resolve, reject ) => {
-        console.log(`start '${masks[i]}'`)
+        // console.log(`start '${masks[i]}'`)
         const img = new Image();
         img.onload = () => {
           this.ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, this.canvas.width, this.canvas.height);
           this.masks[i] = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-          console.log(`loaded '${this.masks[i]}' pixels`);
+          // console.log(`loaded '${this.masks[i]}' pixels`);
           resolve();
         }
         img.onerror = () => {
