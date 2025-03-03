@@ -1,0 +1,75 @@
+@font-face {
+  font-family: FrenchScriptMT;
+  src: url(fonts/frenchscriptmt.ttf);
+}
+
+#titleContainer {
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#title {
+  font-size: 140px;
+  color: var(--light);
+  opacity: 40%;
+  font-family: FrenchScriptMT;
+  margin: 0;
+  font-weight: normal;
+  text-decoration: none;
+  margin-left: 24px;
+}
+
+#title:hover {
+  opacity: 55%;
+}
+
+@media screen and (max-width: 1000px) {
+  #title {
+    font-size: 120px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #title {
+    font-size: 100px;
+  }
+}
+
+.external-link {
+  margin-bottom: 39px;
+  margin-left: 8px;
+  color: var(--light);
+  opacity: 30%;
+}
+
+@media screen and (max-width: 1000px) {
+  .external-link {
+    margin-bottom: 34px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .external-link {
+    margin-bottom: 27px;
+  }
+}/* Author link */
+
+#author-link {
+  color: var(--light);
+  opacity: 10%;
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  top: 0;
+  margin: 7px;
+}
+
+#author-link:hover {
+  opacity: 20%;
+}
