@@ -3,12 +3,7 @@
   src: url(fonts/frenchscriptmt.ttf);
 }
 
-#titleContainer {
-  z-index: 10;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
+#title-container {
   display: flex;
   justify-content: center;
   align-items: flex-end;

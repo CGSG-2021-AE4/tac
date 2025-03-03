@@ -36,10 +36,10 @@ export class Workflow {
     this.coloriser.setColors(colorSet);
   }
 
-  onSceneChange = ( s: SceneMenuOption ) => {
+  onSceneChange = async ( s: SceneMenuOption ) => {
     console.log("NEW SCENE");
     console.log(s);
-    this.loadScene(s.id);
+    return this.loadSceneP(s.id);
   }
   
   constructor( config: Config ) {
@@ -61,7 +61,7 @@ export class Workflow {
     this.sceneMenu.loadConfig(this.config.scenes.map(function( s ): SceneMenuOption { return  { id: s.id, name: s.name, }; }));
   }
 
-  async loadScene( id: number ) { // Load scene by ID
+  private async loadSceneP( id: number ) { // Load scene by ID
     const s = this.config.scenes.find(s => s.id == id);
     if (!s) {
       console.log(`ERROR: no scene with id ${id} was found`);
@@ -72,5 +72,16 @@ export class Workflow {
     console.log("Loaded coloriser");
     this.colorControls.load(s.colors);
     console.log("Loaded color controls")
+  }
+
+  // For public use - this way it is bad but safe
+  async loadScene( id: number ) {
+    const s = this.config.scenes.find(s => s.id == id);
+    if (!s) {
+      console.log(`ERROR: no scene with id ${id} was found`);
+      return;
+    }
+
+    return this.sceneMenu.change(s as SceneMenuOption);
   }
 }

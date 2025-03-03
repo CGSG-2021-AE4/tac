@@ -23,11 +23,11 @@ export class SceneMenu {
 
   optionElements: HTMLElement[] = [];
 
-  public onchange: ( s: SceneMenuOption ) => void;
+  public onchange: ( s: SceneMenuOption ) => Promise<void>;
 
-  change( s: SceneMenuOption ) {
+  async change( s: SceneMenuOption ) {
     this.buttonElement.text(s.name);
-    this.onchange(s);
+    return this.onchange(s);
   }
 
   constructor( container: JQuery<HTMLElement> ) {

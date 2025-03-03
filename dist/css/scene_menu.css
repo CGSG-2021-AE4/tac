@@ -1,7 +1,11 @@
+#scene-menu-container-parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -20px;
+}
+
 #scene-menu-container {
-  position: absolute;
-  left: 800px;
-  top: 200px;
   border-radius: 10px;
   border: 1px solid #f0f0f08f;
   background: color-mix(in srgb, var(--dark), transparent 50%);
