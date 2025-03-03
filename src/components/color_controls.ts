@@ -37,6 +37,9 @@ export class ColorControls {
     // Create or hide needed amount of lines
     if (d.length > this.lines.length) {
       const delta = d.length - this.lines.length;
+      console.log("New color menu:");
+      console.log(d);
+      console.log("Color controls delta = " + delta);
 
       // Create more 
       for (var i = 0; i < delta; i++) {
@@ -80,8 +83,6 @@ export class ColorControls {
       if (!this.lines[i].menu.palette || this.lines[i].menu.palette.name != d[i].palette) {
         // Fetch new palette
         const pal: Color[] = await $.getJSON(this.paletteDir + d[i].palette + ".json");
-        console.log(this.paletteDir + d[i].palette + ".json");
-        console.log(pal)
         this.lines[i].menu.loadPalette({
           name: d[i].palette,
           colors: pal,

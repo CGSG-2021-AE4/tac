@@ -39,6 +39,7 @@ export class Workflow {
   onSceneChange = ( s: SceneMenuOption ) => {
     console.log("NEW SCENE");
     console.log(s);
+    this.loadScene(s.id);
   }
   
   constructor( config: Config ) {
@@ -68,8 +69,8 @@ export class Workflow {
     }
 
     await this.coloriser.load(s.img, s.masks);
-    console.log(this.coloriser);
-
+    console.log("Loaded coloriser");
     this.colorControls.load(s.colors);
+    console.log("Loaded color controls")
   }
 }

@@ -1,7 +1,6 @@
 # Common
 .git/
 **/.vscode/
-**/Makefile
 
 # JS
 **/node_modules/
