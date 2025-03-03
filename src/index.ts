@@ -24,9 +24,9 @@ const config: Config = {
     },
     {
       id: 1,
-      name: "Hoarse",
-      img: "hoarse/main.jpg",
-      masks: ["hoarse/skin_mask.jpg", "hoarse/hair_mask.jpg"],
+      name: "Horse",
+      img: "horse/main.jpg",
+      masks: ["horse/skin_mask.jpg", "horse/hair_mask.jpg"],
       colors: [
         {
           label: "Skin color",
