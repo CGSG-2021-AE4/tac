@@ -45,6 +45,5 @@ const config: Config = {
 
 const wf = new Workflow(config);
 
-
 wf.loadScene(0);
 

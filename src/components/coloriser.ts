@@ -88,7 +88,7 @@ export class ImageColoriser {
       this.currentImg.data[i] = 255;
     }
 
-    console.log(colors)
+    // console.log(colors)
     for (var mi = 0; mi < this.masks.length; mi++) {
       for (var i = 0; i < this.currentImg.data.length; i += 4) {
         this.currentImg.data[i + 0] = (((colors[mi] >> 16) & 0xFF) * this.masks[mi].data[i] / 255.0 + this.currentImg.data[i + 0] * (255 - this.masks[mi].data[i]) / 255.0);
