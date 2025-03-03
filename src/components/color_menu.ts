@@ -45,6 +45,12 @@ export class ColorMenu {
     this.onchange(c);
   }
 
+  resetButton() {
+    this.buttonElement.text("Выберете цвет");
+    this.buttonElement.css("background-color", "var(--light)");
+    this.buttonElement.css("color", "var(--dark)");
+  }
+
   constructor( container: JQuery<HTMLElement> ) {
     this.container = container;
     container.addClass("color-menu");

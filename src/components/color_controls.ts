@@ -70,8 +70,11 @@ export class ColorControls {
       }
     }
 
-    for (var i = 0; i < d.length; i++)
+    for (var i = 0; i < d.length; i++) {
       this.lines[i].container.classList.remove("hidden");
+      this.lines[i].menu.resetButton();
+      this.curColors[i] = WhiteColor;
+    }
     for (var i = d.length; i < this.lines.length; i++) 
       this.lines[i].container.classList.add("hidden");
     
