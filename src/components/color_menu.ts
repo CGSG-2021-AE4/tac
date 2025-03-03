@@ -21,7 +21,7 @@ export class ColorMenuDescriptor {
 export class ColorMenu {
   // Local data
   public palette: Palette; // So I can check before fetching for palette name that is!! unique
-  buttonText = "Выберете цвет";
+  buttonText = "Выберите цвет";
 
   // JQuery elements
   container: JQuery<HTMLElement>;
@@ -46,7 +46,7 @@ export class ColorMenu {
   }
 
   resetButton() {
-    this.buttonElement.text("Выберете цвет");
+    this.buttonElement.text("Выберите цвет");
     this.buttonElement.css("background-color", "var(--light)");
     this.buttonElement.css("color", "var(--dark)");
   }
